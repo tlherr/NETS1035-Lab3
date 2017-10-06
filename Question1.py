@@ -5,8 +5,6 @@
  Create a python program that takes twp inputs, a string search pattern and a string to search through
 """
 
-import string
-
 class InputLengthException(Exception):
     pass
 
@@ -43,4 +41,9 @@ def search_string(to_search, pattern):
 
 to_search = input('Enter a string (at least 20 characters): ')
 pattern = input('Enter a substring to search for:')
-search_string(to_search, pattern)
+try:
+    search_string(to_search, pattern)
+    exit(0)
+except InputLengthException as e:
+    print("Invalid Input. Exiting...")
+    exit(1)
