@@ -1,3 +1,11 @@
+"""
+ Thomas Herr
+ 200325519
+
+ Code modified from original author: Ian McWilliam
+ Create a client that connects to server and sends/receives messages
+"""
+
 from aescrypt2017 import aesencrypt
 from aescrypt2017 import aesdecrypt
 
@@ -30,7 +38,12 @@ send('Ready')
 response = sock.recv(128)
 print("Received: ", decrypt(response))
 
-while True:
-    myinput = input("Enter Message: ")
-    send(myinput)
-    response = sock.recv(32)
+try:
+    while True:
+        myinput = input("Enter Message: ")
+        send(myinput)
+        response = sock.recv(32)
+except KeyboardInterrupt:
+    # User is wanting to exit, clean up
+    sock.close()
+    exit(0)

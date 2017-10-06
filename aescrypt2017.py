@@ -16,6 +16,9 @@ unpad = lambda s: s[:-ord(s[len(s) - 1:])]
 
 
 def aesencrypt(key, plaintext):
+    if (len(plaintext) == 0):
+        raise Warning("Attempting to encrypt an empty string")
+
     # Hash the key
     key = MD5.new(key.encode('utf8')).hexdigest()
     # Pad the input to reach block size
@@ -29,6 +32,9 @@ def aesencrypt(key, plaintext):
 
 
 def aesdecrypt(key, enc):
+    if(len(enc)==0):
+        raise Warning("Attempting to decrypt an empty string")
+
     # Hash the key
     key = MD5.new(key.encode('utf8')).hexdigest()
     # Decode from base64

@@ -1,3 +1,11 @@
+"""
+ Thomas Herr
+ 200325519
+
+ Code modified from original author: Ian McWilliam
+ Create a client that connects to server and sends/receives messages
+"""
+
 from aescrypt2017 import aesencrypt
 from aescrypt2017 import aesdecrypt
 
@@ -21,14 +29,18 @@ print("Waiting for a client...")
 (clientsocket, address) = secure_socket.accept()
 # Client is connecting
 received = clientsocket.recv(400)
-print("Client Sent: ", decrypt(received))
+print("Received: ", decrypt(received))
 
 send('Connected')
 
 time.sleep(2)
 
-while True:
-    data = clientsocket.recv(400)
-    print(decrypt(data))
-    send('Received')
-    time.sleep(2)
+try:
+    while True:
+        data = clientsocket.recv(400)
+        print("Received: ", decrypt(data))
+        send('Received')
+        time.sleep(2)
+except socket.error as e:
+    print("Connection Error. Exiting...")
+    exit(1)
