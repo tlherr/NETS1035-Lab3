@@ -6,11 +6,11 @@
  Create a client that connects to server and sends/receives messages
 """
 
-from aescrypt2017 import aesencrypt
-from aescrypt2017 import aesdecrypt
-
 import socket
 import time
+
+from Question3.libcrypto import aesdecrypt
+from Question3.libcrypto import aesencrypt
 
 AES_KEY = '00112233445566778899aabbccddeeff'
 

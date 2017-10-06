@@ -3,6 +3,7 @@ from Crypto.Hash import MD5
 from base64 import b64decode
 from base64 import b64encode
 import os
+import hmac
 
 BLOCK_SIZE = 16
 
@@ -46,6 +47,4 @@ def aesdecrypt(key, enc):
     # Decrypt everything after the first 16 bytes (which is the IV)
     return unpad(cipher.decrypt(enc[16:]).decode('utf-8'))
 
-# encrypted_val = aesencrypt('1234','summer')
-# print encrypted_val
-# print aesdecrypt('1234', encrypted_val)
+
