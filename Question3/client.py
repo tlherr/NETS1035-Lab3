@@ -8,8 +8,8 @@
 
 import socket
 
-from Question3.libcrypto import aesdecrypt
-from Question3.libcrypto import aesencrypt
+from libcrypto import aesdecrypt
+from libcrypto import aesencrypt
 
 AES_KEY = '00112233445566778899aabbccddeeff'
 
